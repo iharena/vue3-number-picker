@@ -1,0 +1,22 @@
+# Node stuff
+node_modules
+npm-debug.log
+yarn.lock
+package-lock.json
+
+# Build scripts, configs, and sources you don’t want to publish
+src/
+public/
+scripts/
+*.ts
+*.tsx
+*.vue
+!.d.ts
+
+# Project configs
+tsconfig*.json
+vite.config.ts
+vitest.config.ts
+eslint.config.ts
+.env*
+index.html

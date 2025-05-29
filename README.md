@@ -1,0 +1,92 @@
+# VNumberInput
+
+A customizable Vue 3 number input component with increment/decrement buttons, built-in range validation, and long-press adjustment.
+
+---
+
+## Features
+
+- Increment/Decrement buttons with click and press-and-hold adjustment
+- Range limits (`min`/`max`) and custom step size
+- Customizable adjustment speed for press-and-hold
+- Flexible input position: center, left, or right
+- Supports `v-model` for easy two-way binding
+- Custom text alignment and placeholder
+- Style hooks for easy theming
+
+---
+
+## Installation
+
+```bash
+npm install vue-number-input
+```
+
+---
+
+## Example
+
+```vue
+<template>
+  <v-number-input
+    v-model="value"
+    :min="1"
+    :max="10"
+    :step="0.5"
+    placeholder="Type a number"
+    :adjustment-speed="80"
+    input-position="left"
+    text-align="right"
+  />
+</template>
+
+<script setup lang="ts">
+import { ref } from 'vue'
+import VNumberInput from 'vue-number-input'
+import '@/scss/components/number-input/themes/_default.scss' // Import default styles
+
+const value = ref(5)
+</script>
+```
+
+## Props
+
+| Prop              | Type                                | Default     | Description                                      |
+| ----------------- | ----------------------------------- | ----------- | ------------------------------------------------ |
+| `modelValue`      | `number`                            | `0`         | The current value of the input.                  |
+| `step`            | `number`                            | `1`         | The amount to increment or decrement the value.  |
+| `min`             | `number`                            | `-Infinity` | The minimum allowed value.                       |
+| `max`             | `number`                            | `Infinity`  | The maximum allowed value.                       |
+| `placeholder`     | `string`                            | `'0'`       | The placeholder text for the input field.        |
+| `adjustmentSpeed` | `number` (milliseconds)             | `100`       | Interval for repeated adjustment when held (ms). |
+| `textAlign`       | `string`                            | `'center'`  | CSS text alignment for the input value.          |
+| `inputPosition`   | `'center'` \| `'left'` \| `'right'` | `'center'`  | Position of the input relative to the buttons.   |
+
+## Events
+
+| Event               | Payload  | Description                        |
+| ------------------- | -------- | ---------------------------------- |
+| `update:modelValue` | `number` | Emitted when the value is updated. |
+
+## Styling
+
+- **Wrapper:**  
+  `.v-number-input`  
+  The main container for the input and buttons.
+
+- **Buttons:**  
+  `.v-number-input__button`  
+  Applies to both increment and decrement buttons.
+
+- **Input field:**  
+  `.v-number-input__input`  
+  The main input element for number entry.
+
+- **Themes:**  
+  `@/src/scss/components/number-input/themes/_default.scss`.
+
+### Customization Tips
+
+- Override the above classes in your own stylesheet or by updating the SCSS file to match your design system.
+- Use the `inputPosition` and `textAlign` props to control layout and text alignment via inline styles.
+- For advanced theming, you can add more modifiers or use the `theme` prop as a class or attribute hook.

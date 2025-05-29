@@ -1,0 +1,87 @@
+{
+  "name": "vue-number-input",
+  "description": "A customizable Vue 3 number input component with increment/decrement buttons and long-press adjustment.",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "dist/vue-number-input.umd.js",
+  "module": "dist/vue-number-input.es.js",
+  "files": [
+    "dist/",
+    "package.json",
+    "README.md"
+  ],
+  "author": {
+    "name": "Iharena",
+    "email": "mgcodeur@gmail.com",
+    "url": "https://github.com/mgcodeur"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "run-p type-check \"build-only {@}\" --",
+    "build:themes": "sass src/scss/components/number-input/themes/_default.scss dist/themes/default.css --no-source-map --style compressed",
+    "build:package": "run-s build:themes build",
+    "preview": "vite preview",
+    "test": "vitest run --reporter verbose",
+    "test:unit": "vitest",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --build",
+    "lint:oxlint": "oxlint . --fix -D correctness --ignore-path .gitignore",
+    "lint:eslint": "eslint . --fix",
+    "lint": "run-s lint:*",
+    "format": "prettier --write src/",
+    "commitlint": "commitlint --edit",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "vue": "^3.5.13"
+  },
+  "devDependencies": {
+    "@tsconfig/node22": "^22.0.1",
+    "@types/jsdom": "^21.1.7",
+    "@types/node": "^22.14.0",
+    "@vitejs/plugin-vue": "^5.2.3",
+    "@vitest/eslint-plugin": "^1.1.39",
+    "@vue/eslint-config-prettier": "^10.2.0",
+    "@vue/eslint-config-typescript": "^14.5.0",
+    "@vue/test-utils": "^2.4.6",
+    "@vue/tsconfig": "^0.7.0",
+    "eslint": "^9.22.0",
+    "eslint-plugin-oxlint": "^0.16.0",
+    "eslint-plugin-vue": "~10.0.0",
+    "husky": "^9.1.7",
+    "jiti": "^2.4.2",
+    "jsdom": "^26.0.0",
+    "npm-run-all2": "^7.0.2",
+    "oxlint": "^0.16.0",
+    "prettier": "3.5.3",
+    "sass-embedded": "^1.89.0",
+    "typescript": "~5.8.0",
+    "vite": "^6.2.4",
+    "vite-plugin-vue-devtools": "^7.7.2",
+    "vitest": "^3.1.1",
+    "vue-tsc": "^2.2.8"
+  },
+  "keywords": [
+    "vue",
+    "vue3",
+    "component",
+    "number-input",
+    "input",
+    "numeric",
+    "ui",
+    "increment",
+    "decrement",
+    "v-model",
+    "spinner",
+    "counter",
+    "typescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iharena/vue3-number-picker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/iharena/vue3-number-picker/issues"
+  },
+  "homepage": "https://github.com/iharena/vue3-number-picker#readme"
+}
