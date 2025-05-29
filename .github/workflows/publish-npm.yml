@@ -24,7 +24,9 @@ jobs:
         run: npm install
 
       - name: Build project
-        run: sh -c scripts/build.sh --version=minor
+        run: |
+          chmod +x scripts/build.sh
+          ./scripts/build.sh --version=minor
 
       - name: Publish to npm
         env:
