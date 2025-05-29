@@ -1,5 +1,7 @@
 # VNumberInput
 
+![demo](./dist/preview.png)
+
 A customizable Vue 3 number input component with increment/decrement buttons, built-in range validation, and long-press adjustment.
 
 ---
