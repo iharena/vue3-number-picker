@@ -52,7 +52,4 @@ npm run build:themes
 echo "🔨 Building the Vue library..."
 npm run build
 
-echo "🚀 Publishing to npm..."
-npm publish --access public
-
 echo "✅ Publish successful!"
