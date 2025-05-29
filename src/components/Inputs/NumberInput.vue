@@ -121,7 +121,3 @@ watch(
   },
 )
 </script>
-
-<style lang="scss" scoped>
-@use '@/scss/components/number-input/_shared';
-</style>

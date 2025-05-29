@@ -30,9 +30,9 @@ npm install @mgcodeur/vue-number-input
 <template>
   <v-number-input
     v-model="value"
-    :min="1"
-    :max="10"
-    :step="0.5"
+    :min="0"
+    :max="100"
+    :step="1"
     placeholder="Type a number"
     :adjustment-speed="80"
     input-position="left"
@@ -42,8 +42,8 @@ npm install @mgcodeur/vue-number-input
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import VNumberInput from '@mgcodeur/vue-number-input'
-import '@/scss/components/number-input/themes/_default.scss' // Import default styles
+import { VueNumberInput } from '@mgcodeur/vue-number-input'
+import '@mgcodeur/vue-number-input/dist/themes/default.css'
 
 const value = ref(5)
 </script>

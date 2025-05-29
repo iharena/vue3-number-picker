@@ -46,11 +46,8 @@ fi
 echo "➡️  Cleaning the dist folder..."
 rm -rf dist
 
-echo "🎨 Compiling SCSS themes..."
-npm run build:themes
-
 echo "🔨 Building the Vue library..."
-npm run build
+npm run build:package
 
 echo "🚀 Publishing to npm..."
 npm publish --access public --//registry.npmjs.org/:_authToken="$NODE_AUTH_TOKEN"

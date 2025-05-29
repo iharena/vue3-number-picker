@@ -1,6 +1,8 @@
 import { fileURLToPath, URL } from 'node:url'
 
 import { defineConfig } from 'vite'
+
+import dts from 'vite-plugin-dts'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 
@@ -21,7 +23,7 @@ export default defineConfig({
       },
     },
   },
-  plugins: [vue(), vueDevTools()],
+  plugins: [vue(), vueDevTools(), dts()],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
