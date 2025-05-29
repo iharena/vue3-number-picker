@@ -19,7 +19,7 @@ A customizable Vue 3 number input component with increment/decrement buttons, bu
 ## Installation
 
 ```bash
-npm install vue-number-input
+npm install @mgcodeur/vue-number-input
 ```
 
 ---
@@ -42,7 +42,7 @@ npm install vue-number-input
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import VNumberInput from 'vue-number-input'
+import VNumberInput from '@mgcodeur/vue-number-input'
 import '@/scss/components/number-input/themes/_default.scss' // Import default styles
 
 const value = ref(5)
