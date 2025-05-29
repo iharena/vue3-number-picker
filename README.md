@@ -30,15 +30,15 @@ npm install @mgcodeur/vue-number-input
 
 ```vue
 <template>
-  <v-number-input
+  <VueNumberInput
     v-model="value"
     :min="0"
-    :max="100"
+    :max="20"
     :step="1"
     placeholder="Type a number"
-    :adjustment-speed="80"
-    input-position="left"
-    text-align="right"
+    :adjustment-speed="400"
+    input-position="right"
+    text-align="center"
   />
 </template>
 
