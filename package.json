@@ -7,6 +7,7 @@
   "module": "dist/vue-number-input.es.js",
   "files": [
     "dist/",
+    "scripts/postinstall.js",
     "package.json",
     "README.md"
   ],
