@@ -2,37 +2,38 @@
   <div class="v-number-input">
     <button
       class="v-number-input__button"
-      @mousedown="() => startAdjusting('decrement')"
-      @mouseup="stopAdjusting"
-      @mouseleave="stopAdjusting"
-      @touchstart="() => startAdjusting('decrement')"
-      @touchend="stopAdjusting"
-      :style="{ order: fieldOrderStyle.minus }"
+      @mousedown="startAdjust('decrement')"
+      @mouseup="stopAdjust"
+      @mouseleave="stopAdjust"
+      @touchstart="startAdjust('decrement')"
+      @touchend="stopAdjust"
+      :style="{ order: orderStyle.minus }"
     >
       <MinusIcon :size="12" :stroke-width="1.5" />
     </button>
 
     <input
       type="number"
+      v-model="displayValue"
       :step="step"
       :min="min"
       :max="max"
       :placeholder="placeholder"
-      v-model="modelValue"
       class="v-number-input__input"
-      @input="updateValue"
+      @input="onInput"
+      @blur="onBlur"
+      :style="{ textAlign, order: orderStyle.input } as CSSProperties"
       lang="en"
-      :style="{ textAlign: textAlign, order: fieldOrderStyle.input } as CSSProperties"
     />
 
     <button
       class="v-number-input__button"
-      @mousedown="() => startAdjusting('increment')"
-      @mouseup="stopAdjusting"
-      @mouseleave="stopAdjusting"
-      @touchstart="() => startAdjusting('increment')"
-      @touchend="stopAdjusting"
-      :style="{ order: fieldOrderStyle.plus }"
+      @mousedown="startAdjust('increment')"
+      @mouseup="stopAdjust"
+      @mouseleave="stopAdjust"
+      @touchstart="startAdjust('increment')"
+      @touchend="stopAdjust"
+      :style="{ order: orderStyle.plus }"
     >
       <PlusIcon :size="12" />
     </button>
@@ -42,82 +43,100 @@
 <script lang="ts" setup>
 import { computed, ref, watch } from 'vue'
 import type { CSSProperties } from 'vue'
-
 import MinusIcon from '@/components/Icons/MinusIcon.vue'
 import PlusIcon from '@/components/Icons/PlusIcon.vue'
 
-interface Props {
-  modelValue?: number
-  step?: number
-  min?: number
-  max?: number
-  placeholder?: string
-  theme?: 'default'
-  adjustmentSpeed?: number
-  textAlign?: string
-  inputPosition?: 'center' | 'left' | 'right'
+// ===== PROPS & EMITS =====
+const props = withDefaults(
+  defineProps<{
+    adjustmentSpeed?: number
+    inputPosition?: 'center' | 'left' | 'right'
+    max?: number
+    min?: number
+    modelValue?: number
+    placeholder?: string
+    step?: number
+    textAlign?: string
+  }>(),
+  {
+    step: 1,
+    min: -Infinity,
+    max: Infinity,
+    placeholder: '0',
+    modelValue: 0,
+    adjustmentSpeed: 100,
+    textAlign: 'center',
+    inputPosition: 'center',
+  },
+)
+const emit = defineEmits<{ (e: 'update:modelValue', value: number): void }>()
+
+// ===== UTILS =====
+const clamp = (v: number) => Math.min(props.max, Math.max(props.min, v))
+const fix = (v: number) => Number(Number(v).toFixed(getPrecision()))
+const format = (v: number) => fix(v).toFixed(getPrecision())
+const getPrecision = () => props.step.toString().split('.')[1]?.length || 0
+
+// ===== ⚡ STATE =====
+const displayValue = ref<string>(format(fix(clamp(props.modelValue!))))
+const interval = ref<number | null>(null)
+const value = ref<number>(fix(clamp(props.modelValue!)))
+
+// ===== COMPUTED =====
+const orderStyle = computed(
+  () =>
+    ({
+      center: { input: 1, minus: 0, plus: 2 },
+      left: { input: 0, minus: 1, plus: 2 },
+      right: { input: 2, minus: 0, plus: 1 },
+    })[props.inputPosition],
+)
+
+// ===== METHODS =====
+function adjust(type: 'increment' | 'decrement') {
+  const next = fix(clamp((value.value ?? 0) + (type === 'increment' ? props.step : -props.step)))
+  value.value = next
+  displayValue.value = format(next)
+  emit('update:modelValue', next)
 }
-
-const props = withDefaults(defineProps<Props>(), {
-  step: 1,
-  min: -Infinity,
-  max: Infinity,
-  placeholder: '0',
-  modelValue: 0,
-  theme: 'default',
-  adjustmentSpeed: 100,
-  textAlign: 'center',
-  inputPosition: 'center',
-})
-
-/** VARIABLES */
-const emit = defineEmits<{
-  (e: 'update:modelValue', value: number): void
-}>()
-
-const intervalId = ref<number | null>(null)
-const fieldOrderStyle = computed(() => {
-  const positions = {
-    center: { input: 1, minus: 0, plus: 2 },
-    left: { input: 0, minus: 1, plus: 2 },
-    right: { input: 2, minus: 0, plus: 1 },
+function onBlur() {
+  const n = Number(displayValue.value)
+  if (displayValue.value === '' || isNaN(n)) {
+    value.value = fix(Math.max(props.min, 0))
+  } else {
+    value.value = fix(clamp(n))
   }
-
-  return positions[props.inputPosition as 'center' | 'left' | 'right'] || positions.center
-})
-
-const modelValue = ref(props.modelValue)
-
-/** METHODS */
-const startAdjusting = (type: 'increment' | 'decrement') => {
-  if (intervalId.value) return
-
-  const adjust = () => {
-    let newValue = modelValue.value ?? 0
-    newValue += type === 'increment' ? props.step : -props.step
-    newValue = Math.min(Math.max(newValue, props.min), props.max)
-    modelValue.value = newValue
-    emit('update:modelValue', newValue)
+  displayValue.value = format(value.value)
+  emit('update:modelValue', value.value)
+}
+function onInput(e: Event) {
+  displayValue.value = (e.target as HTMLInputElement).value
+  const n = Number(displayValue.value)
+  if (displayValue.value !== '' && !isNaN(n)) {
+    value.value = fix(clamp(n))
+    emit('update:modelValue', value.value)
   }
-
-  adjust()
-  intervalId.value = window.setInterval(adjust, props.adjustmentSpeed)
+}
+function startAdjust(type: 'increment' | 'decrement') {
+  if (interval.value) return
+  adjust(type)
+  interval.value = window.setInterval(() => adjust(type), props.adjustmentSpeed)
+}
+function stopAdjust() {
+  if (interval.value) clearInterval(interval.value)
+  interval.value = null
 }
 
-const stopAdjusting = () => {
-  clearInterval(intervalId.value!)
-  intervalId.value = null
-}
-
-const updateValue = () => {
-  emit('update:modelValue', modelValue.value)
-}
-
-/** WATCHERS */
+// ===== WATCHERS =====
 watch(
   () => props.modelValue,
   (val) => {
-    modelValue.value = val
+    const safe = fix(clamp(val!))
+    if (safe !== value.value) {
+      value.value = safe
+      displayValue.value = format(safe)
+    }
   },
+  { immediate: true },
 )
 </script>
