@@ -15,6 +15,9 @@ A customizable Vue 3 number input component with increment/decrement buttons, bu
 - Supports `v-model` for easy two-way binding
 - Custom text alignment and placeholder
 - Style hooks for easy theming
+- TypeScript: fully written in TypeScript for type safety and better DX
+- Well-tested: strong unit test coverage
+- Automatic decimal precision: the input keeps decimals consistent with your step.
 
 ---
 
@@ -38,7 +41,6 @@ npm install @mgcodeur/vue-number-input
     placeholder="Type a number"
     :adjustment-speed="400"
     input-position="right"
-    text-align="center"
   />
 </template>
 
