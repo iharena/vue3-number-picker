@@ -95,6 +95,7 @@ const value = ref(5)
 - Use the `inputPosition` and `textAlign` props to control layout and text alignment via inline styles.
 - For advanced theming, you can add more modifiers or use the `theme` prop as a class or attribute hook.
 
-<p>
-  <b>If you like this project, please consider giving it a ⭐ on <a href="https://github.com/iharena/vue3-number-picker">GitHub</a>!</b>
-</p>
+## ⭐️ Support
+
+If you find this component useful, please consider starring the repo:  
+[https://github.com/iharena/vue3-number-picker](https://github.com/iharena/vue3-number-picker)
