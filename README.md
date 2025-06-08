@@ -43,15 +43,15 @@ const value = ref(5)
 
 ## Props
 
-| Prop              | Type                                | Default     | Description                                      |
-| ----------------- | ----------------------------------- | ----------- | ------------------------------------------------ |
-| `step`            | `number`                            | `1`         | The amount to increment or decrement the value.  |
-| `min`             | `number`                            | `-Infinity` | The minimum allowed value.                       |
-| `max`             | `number`                            | `Infinity`  | The maximum allowed value.                       |
-| `placeholder`     | `string`                            | `'0'`       | The placeholder text for the input field.        |
-| `adjustmentSpeed` | `number` (milliseconds)             | `100`       | Interval for repeated adjustment when held (ms). |
-| `textAlign`       | `string`                            | `'center'`  | CSS text alignment for the input value.          |
-| `inputPosition`   | `'center'` \| `'left'` \| `'right'` | `'center'`  | Position of the input relative to the buttons.   |
+| Prop              | Type                                | Default    | Description                                      |
+| ----------------- | ----------------------------------- | ---------- | ------------------------------------------------ |
+| `step`            | `number`                            | `1`        | The amount to increment or decrement the value.  |
+| `min`             | `number`                            | `-∞`       | The minimum allowed value.                       |
+| `max`             | `number`                            | `+∞`       | The maximum allowed value.                       |
+| `placeholder`     | `string`                            | `'0'`      | The placeholder text for the input field.        |
+| `adjustmentSpeed` | `number` (milliseconds)             | `100`      | Interval for repeated adjustment when held (ms). |
+| `textAlign`       | `string`                            | `'center'` | CSS text alignment for the input value.          |
+| `inputPosition`   | `'center'` \| `'left'` \| `'right'` | `'center'` | Position of the input relative to the buttons.   |
 
 ## Events
 
