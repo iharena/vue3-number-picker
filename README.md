@@ -57,7 +57,6 @@ const value = ref(5)
 
 | Prop              | Type                                | Default     | Description                                      |
 | ----------------- | ----------------------------------- | ----------- | ------------------------------------------------ |
-| `modelValue`      | `number`                            | `0`         | The current value of the input.                  |
 | `step`            | `number`                            | `1`         | The amount to increment or decrement the value.  |
 | `min`             | `number`                            | `-Infinity` | The minimum allowed value.                       |
 | `max`             | `number`                            | `Infinity`  | The maximum allowed value.                       |
