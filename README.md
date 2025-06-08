@@ -1,5 +1,7 @@
 # VueNumberInput
 
+[![Tests](https://github.com/iharena/vue3-number-picker/actions/workflows/main.yml/badge.svg)](https://github.com/iharena/vue3-number-picker/actions/workflows/main.yml)
+
 ## ![demo](https://i.ibb.co/gMzJDDsq/preview.png)
 
 A customizable Vue 3 number input component with increment/decrement buttons, built-in range validation, and long-press adjustment.
