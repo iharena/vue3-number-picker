@@ -1,6 +1,8 @@
-# VNumberInput
+# VueNumberInput
 
-![https://nodei.co/npm/@mgcodeur/vue-number-input.png?mini=true](https://nodei.co/npm/@mgcodeur/vue-number-input.png?mini=true)
+[![Demo](https://img.shields.io/badge/Live%20Demo-iharena.github.io/vue3--number--picker-blue?style=for-the-badge&logo=github)](https://iharena.github.io/vue3-number-picker)
+
+[**➡️ Click here to try the live demo ⬅️**](https://iharena.github.io/vue3-number-picker)
 
 ![demo](https://i.ibb.co/gMzJDDsq/preview.png)
 
@@ -29,7 +31,7 @@ npm install @mgcodeur/vue-number-input
 
 ---
 
-## Example
+## Usage
 
 ```vue
 <template>
@@ -38,7 +40,6 @@ npm install @mgcodeur/vue-number-input
     :min="0"
     :max="20"
     :step="1"
-    placeholder="Type a number"
     :adjustment-speed="400"
     input-position="right"
   />
@@ -98,3 +99,5 @@ const value = ref(5)
 
 If you find this component useful, please consider starring the repo:  
 [https://github.com/iharena/vue3-number-picker](https://github.com/iharena/vue3-number-picker)
+
+![https://nodei.co/npm/@mgcodeur/vue-number-input.png?mini=true](https://nodei.co/npm/@mgcodeur/vue-number-input.png?mini=true)
