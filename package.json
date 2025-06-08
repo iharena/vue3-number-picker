@@ -1,7 +1,7 @@
 {
   "name": "@mgcodeur/vue-number-input",
   "description": "A customizable Vue 3 number input component with increment/decrement buttons and long-press adjustment.",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "type": "module",
   "main": "dist/vue-number-input.umd.js",
   "module": "dist/vue-number-input.es.js",
