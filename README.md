@@ -1,27 +1,12 @@
 # VueNumberInput
 
-[![Demo](https://img.shields.io/badge/Live%20Demo-iharena.github.io/vue3--number--picker-blue?style=for-the-badge&logo=github)](https://iharena.github.io/vue3-number-picker)
-
-[**➡️ Click here to try the live demo ⬅️**](https://iharena.github.io/vue3-number-picker)
-
-![demo](https://i.ibb.co/gMzJDDsq/preview.png)
+## ![demo](https://i.ibb.co/gMzJDDsq/preview.png)
 
 A customizable Vue 3 number input component with increment/decrement buttons, built-in range validation, and long-press adjustment.
 
-## Features
+[![Demo](https://img.shields.io/badge/Live%20Demo-iharena.github.io/vue3--number--picker-blue?style=for-the-badge&logo=github)](https://iharena.github.io/vue3-number-picker)
 
-- Increment/Decrement buttons with click and press-and-hold adjustment
-- Range limits (`min`/`max`) and custom step size
-- Customizable adjustment speed for press-and-hold
-- Flexible input position: center, left, or right
-- Supports `v-model` for easy two-way binding
-- Custom text alignment and placeholder
-- Style hooks for easy theming
-- TypeScript: fully written in TypeScript for type safety and better DX
-- Well-tested: strong unit test coverage
-- Automatic decimal precision: the input keeps decimals consistent with your step.
-
----
+[**➡️ Click here to try the live demo ⬅️**](https://iharena.github.io/vue3-number-picker)
 
 ## Installation
 
