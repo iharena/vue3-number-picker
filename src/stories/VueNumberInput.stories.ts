@@ -12,7 +12,10 @@ const meta: Meta<typeof VueNumberInput> = {
     min: { control: 'number' },
     max: { control: 'number' },
     step: { control: 'number' },
-    textAlign: { control: 'text' },
+    textAlign: {
+      control: { type: 'select' },
+      options: ['center', 'left', 'right'],
+    },
     inputPosition: {
       control: { type: 'select' },
       options: ['center', 'left', 'right'],
@@ -27,6 +30,7 @@ const meta: Meta<typeof VueNumberInput> = {
     adjustmentSpeed: 100,
     placeholder: '0',
   },
+  tags: ['autodocs'],
 }
 export default meta
 
