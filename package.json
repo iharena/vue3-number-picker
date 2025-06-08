@@ -7,7 +7,6 @@
   "module": "dist/vue-number-input.es.js",
   "files": [
     "dist/",
-    "scripts/postinstall.js",
     "package.json",
     "README.md"
   ],
@@ -17,7 +16,6 @@
     "url": "https://github.com/mgcodeur"
   },
   "scripts": {
-    "postinstall": "node ./scripts/postinstall.js",
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
     "build:themes": "sass src/scss/components/number-input/themes/_default.scss dist/themes/default.css --no-source-map --style compressed",
