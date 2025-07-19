@@ -41,6 +41,13 @@ const value = ref(5)
 </script>
 ```
 
+## Slots
+
+| Slot Name    | Description                         |
+| ------------ | ----------------------------------- |
+| `minus-icon` | Custom content for the minus button |
+| `plus-icon`  | Custom content for the plus button  |
+
 ## Props
 
 | Prop              | Type                                | Default    | Description                                      |
