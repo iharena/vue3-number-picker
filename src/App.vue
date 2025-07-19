@@ -3,5 +3,8 @@ import NumberInput from '@/components/Inputs/NumberInput.vue'
 </script>
 
 <template>
-  <NumberInput :step="1" :min="0" :max="20" placeholder="0" />
+  <NumberInput :step="1" :min="0" :max="20" placeholder="0">
+    <template #minus-icon>minus</template>
+    <template #plus-icon>plus</template>
+  </NumberInput>
 </template>

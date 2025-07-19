@@ -105,4 +105,24 @@ describe('VueNumberInput', () => {
     const n = wrapper.emitted('update:modelValue')?.length
     expect(n).toBe(6)
   })
+
+  it('renders custom minus-icon slot when provided', () => {
+    wrapper = mount(VueNumberInput, {
+      slots: {
+        'minus-icon': '<span class="custom-minus">–</span>',
+      },
+    })
+    expect(wrapper.find('.custom-minus').exists()).toBe(true)
+    expect(wrapper.findComponent({ name: 'MinusIcon' }).exists()).toBe(false)
+  })
+
+  it('renders custom plus-icon slot when provided', () => {
+    wrapper = mount(VueNumberInput, {
+      slots: {
+        'plus-icon': '<span class="custom-plus">+</span>',
+      },
+    })
+    expect(wrapper.find('.custom-plus').exists()).toBe(true)
+    expect(wrapper.findComponent({ name: 'PlusIcon' }).exists()).toBe(false)
+  })
 })

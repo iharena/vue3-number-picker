@@ -9,7 +9,10 @@
       @touchend="stopAdjust"
       :style="{ order: orderStyle.minus }"
     >
-      <MinusIcon :size="12" :stroke-width="1.5" />
+      <span v-if="$slots['minus-icon']">
+        <slot name="minus-icon" />
+      </span>
+      <MinusIcon v-else :size="12" :stroke-width="1.5" />
     </button>
 
     <input
@@ -35,7 +38,10 @@
       @touchend="stopAdjust"
       :style="{ order: orderStyle.plus }"
     >
-      <PlusIcon :size="12" />
+      <span v-if="$slots['plus-icon']">
+        <slot name="plus-icon" />
+      </span>
+      <PlusIcon v-else :size="12" />
     </button>
   </div>
 </template>
